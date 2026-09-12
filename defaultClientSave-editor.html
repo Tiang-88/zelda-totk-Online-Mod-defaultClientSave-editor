@@ -12,36 +12,37 @@
       <div class="brand-mark">△</div>
       <div>
         <div class="eyebrow">THE LEGEND OF ZELDA: TEARS OF THE KINGDOM</div>
-        <h1>初始存档编辑器</h1>
+        <h1 data-i18n="app.title">初始存档编辑器</h1>
       </div>
     </div>
     <div class="toolbar">
-      <label class="button secondary" for="file-input">打开 KTML</label>
+      <button id="language-toggle" class="button language" type="button" title="切换为英文" aria-label="切换为英文"><span class="language-icon" aria-hidden="true">◎</span><span id="language-target">EN</span></button>
+      <label class="button secondary" for="file-input" data-i18n="button.open">打开 KTML</label>
       <input id="file-input" type="file" accept=".ktml,.txt,application/octet-stream" hidden>
-      <button id="load-default" class="button secondary">载入服务器默认文件</button>
-      <button id="apply-preset" class="button preset" disabled>套用物资预设</button>
-      <button id="download" class="button primary" disabled>下载 KTML</button>
+      <button id="load-default" class="button secondary" data-i18n="button.loadDefault">载入服务器默认文件</button>
+      <button id="apply-preset" class="button preset" data-i18n="button.applyPreset" disabled>套用物资预设</button>
+      <button id="download" class="button primary" data-i18n="button.download" disabled>下载 KTML</button>
     </div>
   </header>
 
   <main class="app-shell">
     <section id="dropzone" class="dropzone">
       <div class="drop-icon">↓</div>
-      <div>
-        <strong>拖入一个 <code>.ktml</code> 文件</strong>
-        <span>也可以使用上方的“打开 KTML”。原文件不会被直接修改。</span>
+      <div class="drop-copy">
+        <strong><span data-i18n="drop.title">拖入一个</span> <code>.ktml</code> <span data-i18n="drop.file">文件</span></strong>
+        <span data-i18n="drop.hint">也可以使用上方的“打开 KTML”。原文件不会被直接修改。</span>
       </div>
-      <div id="file-status" class="file-status">尚未载入文件</div>
+      <div id="file-status" class="file-status" data-i18n="file.none">尚未载入文件</div>
     </section>
 
     <div id="notice" class="notice" hidden></div>
     <div id="editor" class="editor hidden">
       <aside class="sidebar">
-        <div class="sidebar-heading">编辑器</div>
-        <button class="nav-item active" data-view="status"><span class="nav-icon">◈</span> 基本状态 <span class="nav-count" id="status-count"></span></button>
-        <button class="nav-item" data-view="inventory"><span class="nav-icon">◆</span> 初始物资 <span class="nav-count" id="inventory-count"></span></button>
-        <button class="nav-item" data-view="variables"><span class="nav-icon">{} </span> 全部变量 <span class="nav-count" id="variable-count"></span></button>
-        <div class="sidebar-note">物品目录来自当前目录内的 TOTK 编辑器。英文名称和内部 ID 会同时保留，方便核对实际写入值。</div>
+        <div class="sidebar-heading" data-i18n="sidebar.title">编辑器</div>
+        <button class="nav-item active" data-view="status"><span class="nav-icon">◈</span><span data-i18n="nav.status">基本状态</span><span class="nav-count" id="status-count"></span></button>
+        <button class="nav-item" data-view="inventory"><span class="nav-icon">◆</span><span data-i18n="nav.inventory">初始物资</span><span class="nav-count" id="inventory-count"></span></button>
+        <button class="nav-item" data-view="variables"><span class="nav-icon">{} </span><span data-i18n="nav.variables">全部变量</span><span class="nav-count" id="variable-count"></span></button>
+        <div class="sidebar-note" data-i18n="sidebar.note">物品目录来自当前目录内的 TOTK 编辑器。英文名称和内部 ID 会同时保留，方便核对实际写入值。</div>
       </aside>
       <section class="workspace">
         <div id="view-status" class="view"></div>
@@ -52,7 +53,7 @@
   </main>
 
   <template id="empty-template">
-    <div class="empty-state"><div class="empty-symbol">◇</div><h3>尚未载入文件</h3><p>打开 KTML 后即可开始编辑。</p></div>
+    <div class="empty-state"><div class="empty-symbol">◇</div><h3 data-empty-title>尚未载入文件</h3><p data-empty-text>打开 KTML 后即可开始编辑。</p></div>
   </template>
   <script src="ktml.js"></script>
   <script src="defaultClientSave-data.js"></script>

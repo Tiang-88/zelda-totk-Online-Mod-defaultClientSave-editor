@@ -27,15 +27,19 @@ h1 { margin: 2px 0 0; font-family: Georgia, serif; font-size: clamp(20px, 3vw, 2
 .button.primary:hover { background: #e7c681; }
 .button.preset { color: #f6f1e5; background: #2c5f59; border-color: #6d9e91; }
 .button.preset:hover { background: #39766d; }
+.button.language { min-width: 64px; gap: 7px; padding: 0 12px; color: #f4f2e9; background: #203f3d; border-color: #76958f; }
+.button.language:hover { background: #2a4e4b; }
+.language-icon { color: #d9b46a; font-size: 18px; line-height: 1; }
 .button:disabled { opacity: .45; cursor: not-allowed; }
 .app-shell { max-width: 1480px; margin: 0 auto; padding: 26px clamp(16px, 4vw, 54px) 60px; }
 .dropzone { min-height: 73px; border: 1px dashed #9eaeaa; background: #eef3ef; display: flex; align-items: center; gap: 13px; padding: 13px 17px; transition: border-color .15s, background .15s; }
 .dropzone.dragover { background: #e1eeea; border-color: var(--teal); }
 .drop-icon { width: 36px; height: 36px; background: #d4e6df; color: var(--teal); display: grid; place-items: center; font-size: 23px; }
-.dropzone strong, .dropzone span { display: block; }
-.dropzone span { color: var(--muted); margin-top: 2px; font-size: 13px; }
+.drop-copy > strong, .drop-copy > span { display: block; }
+.drop-copy > span { color: var(--muted); margin-top: 2px; font-size: 13px; }
+.drop-copy strong span { display: inline; }
 code, .mono { font-family: "SFMono-Regular", Consolas, monospace; }
-.file-status { margin-left: auto; color: var(--teal); font-size: 12px; font-weight: 700; text-align: right; }
+.file-status { min-width: 0; margin-left: auto; color: var(--teal); font-size: 12px; font-weight: 700; text-align: right; overflow-wrap: anywhere; }
 .notice { margin-top: 16px; padding: 11px 14px; border-left: 3px solid var(--gold); background: #fff7e8; color: #66502c; }
 .notice.error { border-color: var(--red); background: #fff0ee; color: #713d38; }
 .editor { margin-top: 20px; min-height: 650px; display: grid; grid-template-columns: 220px minmax(0, 1fr); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); }
@@ -60,7 +64,7 @@ code, .mono { font-family: "SFMono-Regular", Consolas, monospace; }
 .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; }
 .field { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(130px, 45%); align-items: center; gap: 12px; }
 .field label { color: #50605e; font-size: 13px; overflow-wrap: anywhere; }
-.field label .item-id { display: block; margin-top: 2px; }
+.field label .item-id { display: block; margin-top: 2px; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
 .field input, .field select, .variable-input { width: 100%; min-height: 34px; border: 1px solid #c9d3cf; border-radius: 2px; padding: 6px 8px; background: #fff; color: var(--ink); }
 .field input:focus, .field select:focus, .variable-input:focus, .search:focus { outline: 2px solid #acd0c4; outline-offset: 1px; border-color: var(--teal); }
 .field input[type="checkbox"] { width: 18px; min-height: 18px; justify-self: end; accent-color: var(--teal); }
@@ -133,7 +137,8 @@ code, .mono { font-family: "SFMono-Regular", Consolas, monospace; }
   .editor { display: block; }
   .sidebar { border-right: 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); padding: 8px; gap: 5px; }
   .sidebar-heading, .sidebar-note { display: none; }
-  .nav-item { border-left: 0; border-bottom: 3px solid transparent; justify-content: center; padding: 0 5px; font-size: 12px; }
+  .nav-item { min-width: 0; border-left: 0; border-bottom: 3px solid transparent; justify-content: center; padding: 0 5px; font-size: 12px; }
+  .nav-item [data-i18n] { min-width: 0; overflow-wrap: anywhere; }
   .nav-item.active { border-bottom-color: var(--teal); }
   .nav-count { display: none; }
   .workspace { padding: 18px 13px; }
@@ -146,7 +151,7 @@ code, .mono { font-family: "SFMono-Regular", Consolas, monospace; }
 @media (max-width: 480px) {
   .app-shell { padding-left: 10px; padding-right: 10px; }
   .dropzone { align-items: flex-start; flex-wrap: wrap; }
-  .file-status { width: 100%; text-align: left; margin-left: 49px; }
+  .file-status { width: calc(100% - 49px); text-align: left; margin-left: 49px; }
   .item-row .item-field { display: none; }
   .item-icon { width: 36px; height: 36px; }
 }
